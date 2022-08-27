@@ -68,7 +68,7 @@ const holdScore = () => {
     score[activeplayer] = score[activeplayer] + currentScore;
     document.getElementById(`score--${activeplayer}`).textContent =
       score[activeplayer];
-    if (score[activeplayer] >= 10) {
+    if (score[activeplayer] >= 100) {
       //finish game
       isplaying = false;
       document
