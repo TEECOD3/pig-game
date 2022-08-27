@@ -8,19 +8,29 @@ const btnRoll = document.querySelector('.btn--roll');
 const btnHold = document.querySelector('.btn--hold');
 const current0El = document.getElementById('current--0');
 const current1El = document.getElementById('current--1');
-const player0E1 = document.querySelector('.palyer--0');
-const playerE1 = document.querySelector('.palyer--1');
-//hiding these elements
+const player0E1 = document.querySelector('.player--0');
+const playerE1 = document.querySelector('.player--1');
 
-//game states are1 saved here
-let isplaying = true;
-let currentScore = 0;
-let activeplayer = 0;
-let score = [0, 0];
-diceImage.classList.add('hidden');
-score0El.textContent = 0;
-score1El.textContent = 0;
+let isplaying, currentScore, activeplayer, score;
 
+const initials = function () {
+  //game states are saved here
+  isplaying = true;
+  currentScore = 0;
+  activeplayer = 0;
+  score = [0, 0];
+
+  diceImage.classList.add('hidden');
+  score0El.textContent = 0;
+  score1El.textContent = 0;
+  player0E1.classList.remove('player--winner');
+  playerE1.classList.remove('player--winner');
+  player0E1.classList.add('player--active');
+  playerE1.classList.remove('player--active');
+  current0El.textContent = 0;
+  current1El.textContent = 0;
+};
+initials();
 //function to switch player
 const switchplayer = function () {
   document.getElementById(`current--${activeplayer}`).textContent = 0;
@@ -71,5 +81,7 @@ const holdScore = () => {
   }
 };
 
+//event handerler to restart the game
+btnNew.addEventListener('click', initials);
 btnRoll.addEventListener('click', rollDice);
 btnHold.addEventListener('click', holdScore);
